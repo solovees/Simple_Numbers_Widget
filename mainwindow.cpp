@@ -31,6 +31,11 @@ void MainWindow::calculate() {
         dlg.exec();
 
     }
+    else if(a<0 || b<0){
+        QMessageBox dlg;
+        dlg.setText("Ошибка,сэр!");
+        dlg.exec();
+    }
     else{
         for(int n: TwoNumber::getList(a, b)) {
             ui->listWidget->addItem(QString::number(n));
