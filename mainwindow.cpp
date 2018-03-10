@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "twonumber.h"
+#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -14,9 +15,27 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::calculate() {
-    int a = ui->lineEditA->text().toInt();
-    int b = ui->lineEditB->text().toInt();
-    for(int n: TwoNumber::getList(a, b)) {
-        ui->listWidget->addItem(QString::number(n));
+    bool isaOK, isbOK;
+
+    int a = ui->lineEditA->text().toInt(&isaOK);
+    int b = ui->lineEditB->text().toInt(&isbOK);
+
+    if(!isaOK){
+        QMessageBox dlg;
+        dlg.setText("Ошибка,сэр!");
+        dlg.exec();
     }
+    else if(!isbOK){
+        QMessageBox dlg;
+        dlg.setText("Ошибка,сэр!");
+        dlg.exec();
+
+    }
+    else{
+        for(int n: TwoNumber::getList(a, b)) {
+            ui->listWidget->addItem(QString::number(n));
+        }
+    }
+
+
 }
