@@ -31,12 +31,12 @@ void MainWindow::calculate() {
         dlg.exec();
 
     }
-    else if(a<0 || b<0){
+    else if(a<=0 || b<=0){
         QMessageBox dlg;
         dlg.setText("Ошибка,сэр!");
         dlg.exec();
     }
-    else if(a>b){
+    else if(a>=b){
         QMessageBox dlg;
         dlg.setText("Ошибка,сэр!");
         dlg.exec();
@@ -46,6 +46,5 @@ void MainWindow::calculate() {
             ui->listWidget->addItem(QString::number(n));
         }
     }
-
 
 }
