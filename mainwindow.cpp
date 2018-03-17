@@ -22,23 +22,23 @@ void MainWindow::calculate() {
 
     if(!isaOK){
         QMessageBox dlg;
-        dlg.setText("Ошибка,сэр!");
+        dlg.setText("Ошибка, недопустимое занчение в слоте числа A!");
         dlg.exec();
     }
     else if(!isbOK){
         QMessageBox dlg;
-        dlg.setText("Ошибка,сэр!");
+        dlg.setText("Ошибка, недопустимое занчение в слоте числа B!");
         dlg.exec();
 
     }
     else if(a<=0 || b<=0){
         QMessageBox dlg;
-        dlg.setText("Ошибка,сэр!");
+        dlg.setText("Ошибка, введеные значения отрицательны!");
         dlg.exec();
     }
     else if(a>=b){
         QMessageBox dlg;
-        dlg.setText("Ошибка,сэр!");
+        dlg.setText("Ошибка, число B больше или равно числа A!");
         dlg.exec();
     }
     else{

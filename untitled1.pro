@@ -31,6 +31,5 @@ SOURCES += \
 HEADERS += \
         mainwindow.h \
     twonumber.h
-
 FORMS += \
         mainwindow.ui
