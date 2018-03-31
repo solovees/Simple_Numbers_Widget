@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <lab3_prost.h>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -18,32 +19,22 @@ void MainWindow::calculate() {
 
     int a = ui->lineEditA->text().toInt(&isaOK);
     int b = ui->lineEditB->text().toInt(&isbOK);
-
-    if(!isaOK){
-        QMessageBox dlg;
-        dlg.setText("Ошибка, недопустимое занчение в слоте числа A!");
-        dlg.exec();
-    }
-    else if(!isbOK){
-        QMessageBox dlg;
-        dlg.setText("Ошибка, недопустимое занчение в слоте числа B!");
-        dlg.exec();
-
-    }
-    else if(a<=0 || b<=0){
-        QMessageBox dlg;
-        dlg.setText("Ошибка, введеные значения отрицательны!");
-        dlg.exec();
-    }
-    else if(a>=b){
-        QMessageBox dlg;
-        dlg.setText("Ошибка, число B больше или равно числа A!");
-        dlg.exec();
-    }
-    else{
-        for(int n: TwoNumber::getList(a, b)) {
-            ui->listWidget->addItem(QString::number(n));
+    try{
+        if(!isaOK){
+            throw std::invalid_argument("A must be an integer");
         }
-    }
+        else if(!isbOK){
+            throw std::invalid_argument("B must be an integer");
 
+        }
+        else{
+            for(int n: TwoNumber::getList(a, b)) {
+                ui->listWidget->addItem(QString::number(n));
+            }
+        }
+    } catch (std::exception const & e) {
+        QMessageBox dlg;
+        dlg.setText(e.what());
+        dlg.exec();
+        }
 }
