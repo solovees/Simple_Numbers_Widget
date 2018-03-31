@@ -39,3 +39,6 @@ else:unix: LIBS += -L$$PWD/../../Lab3_library/build-lab3_prost-Desktop_Qt_5_9_1_
 
 INCLUDEPATH += $$PWD/../../Lab3_library/lab3_prost
 DEPENDPATH += $$PWD/../../Lab3_library/lab3_prost
+
+DISTFILES += \
+    .astylerc
