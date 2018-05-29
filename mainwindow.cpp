@@ -16,6 +16,7 @@ void MainWindow::calculate() {
     bool isaOK, isbOK;
     int a = ui->lineEditA->text().toInt(&isaOK);
     int b = ui->lineEditB->text().toInt(&isbOK);
+    ui->listWidget->clear();
     try {
         if(!isaOK) {
             throw std::invalid_argument("A must be an integer");
